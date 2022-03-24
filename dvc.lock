@@ -8,26 +8,34 @@ stages:
       size: 1866
     params:
       src/params.py:
+        EnvConfig:
+          num_opponents: 5
         TrainConfig:
-          num_training_episodes: 50000
+          num_training_episodes: 20000
           seed: 0
     outs:
     - path: outputs/model.pkl
-      md5: ef51c1907a1e68396c73e747d9bd02a5
-      size: 10021239
+      md5: dcb99c16bf90d79332022181f6aa4b01
+      size: 10037701
     - path: outputs/train_rewards.json
-      md5: 65aead3ae892ff9263ccd1c073345c2e
-      size: 8877
+      md5: 50760b4f6e0fda484f6c82792632fb7f
+      size: 3554
   eval:
     cmd: python src/eval.py
     deps:
     - path: outputs/model.pkl
-      md5: ef51c1907a1e68396c73e747d9bd02a5
-      size: 10021239
+      md5: dcb99c16bf90d79332022181f6aa4b01
+      size: 10037701
     - path: src/eval.py
       md5: 5bc66e631325f04c0291c85e42186f95
       size: 1126
+    params:
+      src/params.py:
+        EnvConfig:
+          num_opponents: 5
+        EvalConfig:
+          num_games: 200
     outs:
     - path: outputs/metrics.json
-      md5: ae2291323272ac20a732d9114aa57cff
-      size: 38
+      md5: 28c0db526b75e1d14ef8d8438f03cb58
+      size: 37

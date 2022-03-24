@@ -4,13 +4,15 @@ stages:
     deps:
       - src/train.py
     outs:
-    - outputs/model.pkl
+    - outputs/model.pkl:
+        cache: false
     params:
       - src/params.py:
           - EnvConfig
           - TrainConfig
     plots:
       - outputs/train_rewards.json:
+          cache: false
           template: smooth
 
 
@@ -24,4 +26,5 @@ stages:
           - EnvConfig
           - EvalConfig
     metrics:
-      - outputs/metrics.json
+      - outputs/metrics.json:
+          cache: false
