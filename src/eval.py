@@ -12,7 +12,7 @@ import rlcard.agents.pettingzoo_agents
 env_config = EnvConfig()
 eval_config = EvalConfig()
 
-with open("./models/model.pkl", "rb") as f:
+with open("./outputs/model.pkl", "rb") as f:
     learning_agent = pickle.load(f)
 
 # Create an environment for multi-agent training using pettingzoo
@@ -37,5 +37,5 @@ for i in range(env_config.num_opponents):
 rewards = rlcard.utils.tournament_pettingzoo(env, agents, eval_config.num_games)
 learned_agent_reward = rewards[learning_agent_name]
 
-with open("./metrics/summary.json", "w+") as f:
+with open("./outputs/metrics.json", "w") as f:
     json.dump({"tournament_average_reward": learned_agent_reward}, f)

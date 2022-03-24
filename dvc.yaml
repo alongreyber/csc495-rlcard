@@ -1,16 +1,27 @@
 stages:
   train:
-    cmd: docker build -f Dockerfile.train-cpu -t csc495-rts . && docker run -v $(pwd)/models:/app/models csc495-rts python src/train.py
+    cmd: python src/train.py
+    deps:
+      - src/train.py
     outs:
-    - models/model.pkl
+    - outputs/model.pkl
     params:
       - src/params.py:
+          - EnvConfig
           - TrainConfig
+    plots:
+      - outputs/train_rewards.json:
+          template: smooth
+
 
   eval:
-    cmd: docker build -f Dockerfile.train-cpu -t csc495-rts . && docker run -v $(pwd)/metrics:/app/metrics csc495-rts python src/eval.py
+    cmd: python src/eval.py
     deps:
-    - models/model.pkl
+      - outputs/model.pkl
+      - src/eval.py
+    params:
+      - src/params.py:
+          - EnvConfig
+          - EvalConfig
     metrics:
-      - metrics/summary.json:
-          cache: false
+      - outputs/metrics.json

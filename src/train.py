@@ -1,7 +1,6 @@
+import json
 import torch
 import pickle
-
-from utils import import_submodules
 
 import pettingzoo
 import pettingzoo.classic
@@ -25,17 +24,21 @@ agents = {}
 device = rlcard.utils.get_device()
 
 learning_agent_name = env.agents[0]
+
 learning_agent = rlcard.agents.pettingzoo_agents.DQNAgentPettingZoo(
     num_actions=env.action_space(learning_agent_name).n,
     state_shape=env.observation_space(learning_agent_name)["observation"].shape,
     mlp_layers=[64,64],
     device=device,
 )
+
 agents[learning_agent_name] = learning_agent
 
 # Define the opponents
 for i in range(env_config.num_opponents):
     agents[env.agents[i+1]] = rlcard.agents.pettingzoo_agents.RandomAgentPettingZoo(num_actions=env.action_space(env.agents[i]).n)
+
+reward_info = []
 
 # Train
 num_timesteps = 0
@@ -47,6 +50,16 @@ for episode in range(train_config.num_training_episodes):
     for ts in trajectories[learning_agent_name]:
         learning_agent.feed(ts)
 
+    # Compute total reward so we can log it
+    if episode % 100 == 0:
+        total_reward = \
+            sum(ts[2] for ts in trajectories[learning_agent_name])
+        reward_info.append(total_reward)
+
 # Save model
-with open("./models/model.pkl", "wb") as f:
+with open("./outputs/model.pkl", "wb") as f:
     pickle.dump(learning_agent, f)
+
+# Save plots
+with open("./outputs/train_rewards.json", "w") as f:
+    json.dump([{"reward" : r} for r in reward_info], f)
