@@ -28,7 +28,10 @@ learning_agent_name = env.agents[0]
 learning_agent = rlcard.agents.pettingzoo_agents.DQNAgentPettingZoo(
     num_actions=env.action_space(learning_agent_name).n,
     state_shape=env.observation_space(learning_agent_name)["observation"].shape,
-    mlp_layers=[64,64],
+    mlp_layers=[
+        train_config.mlp_layer_size
+        for _ in range(train_config.mlp_layer_count)
+    ],
     device=device,
 )
 
