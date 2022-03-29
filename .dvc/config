@@ -1,5 +1,5 @@
 [core]
     autostage = true
-    remote = myremote
-['remote "myremote"']
-    url = /tmp/dvcstore
+    remote = storage
+['remote "storage"']
+    url = s3://csc495-rlcard

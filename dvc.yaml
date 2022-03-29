@@ -4,8 +4,7 @@ stages:
     deps:
       - src/train.py
     outs:
-    - outputs/model.pkl:
-        cache: false
+      - outputs/model.pkl
     params:
       - src/params.py:
           - EnvConfig
