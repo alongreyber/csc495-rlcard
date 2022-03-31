@@ -3,8 +3,9 @@ FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-runtime
 # Some dependencies need to build from scratch
 RUN apt update && apt install -y build-essential
 
-RUN pip install pettingzoo[classic]==1.12.0
-RUN pip install --ignore-installed rlcard==1.0.6
+# Needs to be done in two pip commands
+RUN pip install pettingzoo[classic]==1.12.0 dvc &&\
+    pip install --ignore-installed rlcard==1.0.6
 
 # Copy in code
 WORKDIR /app
