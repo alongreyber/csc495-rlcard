@@ -27,3 +27,6 @@ stages:
     metrics:
       - outputs/metrics.json:
           cache: false
+    outs:
+      - outputs/losses_info.txt:
+          cache: false
