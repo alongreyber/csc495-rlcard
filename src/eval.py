@@ -5,7 +5,7 @@ import pickle
 from params import EnvConfig, EvalConfig
 
 import pettingzoo
-import pettingzoo.classic
+import pettingzoo.classic.texas_holdem_v4
 
 import rlcard
 import rlcard.agents.pettingzoo_agents

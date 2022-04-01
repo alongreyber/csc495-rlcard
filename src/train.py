@@ -4,7 +4,7 @@ import pickle
 from collections import defaultdict
 
 import pettingzoo
-import pettingzoo.classic
+import pettingzoo.classic.texas_holdem_v4
 
 import rlcard
 import rlcard.agents.pettingzoo_agents
