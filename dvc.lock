@@ -1,36 +1,36 @@
 schema: '2.0'
 stages:
   train:
-    cmd: python src/train.py
+    cmd: python3 src/train.py
     deps:
     - path: src/train.py
-      md5: 333e731c7755e3aae158915115ef4bad
-      size: 3267
+      md5: a63326fcb5c5a22d75a8870f1effcd97
+      size: 2646
     params:
       src/params.py:
         EnvConfig:
           num_opponents: 5
         TrainConfig:
-          num_training_episodes: 2000
+          num_training_episodes: 4000
           mlp_layer_count: 2
           mlp_layer_size: 64
-          seed: 0
+          seed: 42
     outs:
     - path: outputs/model.pkl
-      md5: 503ac01bb20201cde11e92226f3c0c85
-      size: 3169256
+      md5: 304d8f2558deeb0b20c494bdcc3e88b1
+      size: 6505214
     - path: outputs/train_rewards.json
-      md5: 49a2b8c24177349c7eabc8f0ddaf4fec
-      size: 347
+      md5: 7646d69bfc16593485853eac9c4d6ea9
+      size: 696
   eval:
-    cmd: python src/eval.py
+    cmd: python3 src/eval.py
     deps:
     - path: outputs/model.pkl
-      md5: 503ac01bb20201cde11e92226f3c0c85
-      size: 3169256
+      md5: 304d8f2558deeb0b20c494bdcc3e88b1
+      size: 6505214
     - path: src/eval.py
-      md5: 9ab70e634582bc0998634c521fb5c27a
-      size: 3223
+      md5: e5a28fb1f40399e81e370d6ec828d8b4
+      size: 3295
     params:
       src/params.py:
         EnvConfig:
@@ -38,10 +38,11 @@ stages:
         EvalConfig:
           num_games: 1000
           num_saved_losses: 5
+          seed: 42
     outs:
     - path: outputs/losses_info.txt
-      md5: 27330c259ffb71554d1b3a835e42f6bd
-      size: 4999
+      md5: 038cba2d4a9e1e5a7191f068c5428a76
+      size: 5438
     - path: outputs/metrics.json
-      md5: d95bfda6c032f772bec4b64f2a1f96b2
+      md5: 99f601b9211fc826329c09caa8a2bb73
       size: 38
