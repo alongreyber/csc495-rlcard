@@ -1,6 +1,6 @@
 stages:
   train:
-    cmd: python src/train.py
+    cmd: python3 src/train.py
     deps:
       - src/train.py
     outs:
@@ -16,7 +16,7 @@ stages:
 
 
   eval:
-    cmd: python src/eval.py
+    cmd: python3 src/eval.py
     deps:
       - outputs/model.pkl
       - src/eval.py

@@ -1,235 +1,266 @@
 Hands:
-    player_0: ['HA', 'H5']
-    player_1: ['S3', 'C8']
-    player_2: ['D3', 'DA']
-    player_3: ['D7', 'HJ']
-    player_4: ['S8', 'HQ']
-    player_5: ['SK', 'S2']
+    player_0: ['CJ', 'H3']
+    player_1: ['C9', 'S2']
+    player_2: ['H5', 'S4']
+    player_3: ['DT', 'S6']
+    player_4: ['D3', 'CK']
+    player_5: ['S9', 'CA']
 Game Log:
-    player_2: raise
-    player_3: call
-    player_4: call
-    player_5: raise
-    player_0: call
-    player_1: raise
-    player_2: raise
-    player_3: call
-    player_4: call
-    player_5: call
-    player_0: call
-    player_1: call
-    Cards on Table: ['S9', 'CT', 'S7']
-    player_2: raise
-    player_3: raise
-    player_4: raise
-    player_5: fold
-    player_0: call
-    player_1: raise
-    player_2: call
-    player_3: call
     player_4: fold
-    player_0: call
-    player_1: fold
-    player_2: check
-    player_3: check
-    Cards on Table: ['S9', 'CT', 'S7', 'HT']
-    player_0: check
-    player_2: check
-    player_3: raise
-    player_0: call
-    player_2: call
-    player_3: fold
-    player_0: check
-    player_2: check
-    player_0: check
-    Cards on Table: ['S9', 'CT', 'S7', 'HT', 'SJ']
-    player_2: raise
-    player_0: fold
-Overall player rewards:
-    player_0: -11.0
-    player_1: -9.0
-    player_2: 44.0
-    player_3: -11.0
-    player_4: -8.0
-    player_5: -5.0
-
-
-Hands:
-    player_0: ['C8', 'CK']
-    player_1: ['H2', 'D4']
-    player_2: ['H5', 'SQ']
-    player_3: ['S9', 'S7']
-    player_4: ['C5', 'CQ']
-    player_5: ['SA', 'CJ']
-Game Log:
-    player_2: raise
-    player_3: raise
-    player_4: raise
     player_5: raise
-    player_0: call
-    player_1: call
-    player_2: call
-    player_3: call
-    player_4: fold
-    player_5: check
-    Cards on Table: ['S4', 'HJ', 'SK']
     player_0: raise
     player_1: raise
-    player_2: raise
-    player_3: call
-    player_5: raise
-    player_0: call
-    player_1: fold
     player_2: call
     player_3: fold
-    player_5: fold
-    player_0: check
-    player_2: check
-    player_0: check
-    Cards on Table: ['S4', 'HJ', 'SK', 'S2']
-    player_2: check
-    player_0: check
-    player_2: check
-    player_0: check
-    player_2: check
-    player_0: check
-    Cards on Table: ['S4', 'HJ', 'SK', 'S2', 'D6']
-    player_2: raise
+    player_5: raise
     player_0: call
+    player_1: call
+    player_2: call
+    player_5: check
+    player_0: check
+    Cards on Table: ['S3', 'HA', 'C3']
+    player_1: fold
     player_2: check
+    player_5: check
+    player_0: raise
+    player_2: fold
+    player_5: call
+    player_0: raise
+    player_5: raise
+    player_0: call
+    player_5: raise
+    player_0: call
+    player_5: check
+    player_0: check
+    player_5: check
+    player_0: check
+    Cards on Table: ['S3', 'HA', 'C3', 'D4']
+    player_5: raise
+    player_0: call
+    player_5: raise
+    player_0: raise
+    player_5: raise
+    player_0: call
+    player_5: check
+    player_0: check
+    player_5: check
+    player_0: check
+    Cards on Table: ['S3', 'HA', 'C3', 'D4', 'C7']
+    player_5: check
+    player_0: raise
+    player_5: raise
+    player_0: raise
+    player_5: call
     player_0: fold
 Overall player rewards:
-    player_0: -11.0
-    player_1: -7.0
-    player_2: 39.0
-    player_3: -8.0
-    player_4: -4.0
-    player_5: -9.0
+    player_0: -23.0
+    player_1: -5.0
+    player_2: -5.0
+    player_3: -1.0
+    player_4: 0.0
+    player_5: 34.0
 
 
 Hands:
-    player_0: ['H9', 'CK']
-    player_1: ['H4', 'SQ']
-    player_2: ['C4', 'H5']
-    player_3: ['D3', 'S5']
-    player_4: ['DA', 'SK']
-    player_5: ['C2', 'C3']
+    player_0: ['DQ', 'H5']
+    player_1: ['S2', 'C5']
+    player_2: ['D9', 'D6']
+    player_3: ['S4', 'S5']
+    player_4: ['S7', 'SJ']
+    player_5: ['H8', 'D5']
 Game Log:
+    player_5: fold
     player_0: call
+    player_1: raise
+    player_2: raise
+    player_3: call
+    player_4: call
+    player_0: raise
+    player_1: call
+    player_2: call
+    player_3: raise
+    player_4: call
+    player_0: call
+    player_1: call
+    player_2: call
+    player_3: fold
+    player_4: check
+    Cards on Table: ['D2', 'D4', 'CA']
+    player_0: raise
     player_1: call
     player_2: fold
-    player_3: call
-    player_4: fold
-    player_5: raise
-    player_0: call
-    player_1: fold
-    player_3: raise
-    player_5: raise
-    player_0: call
-    player_3: raise
-    player_5: call
-    player_0: call
-    player_3: fold
-    player_5: check
-    player_0: check
-    player_5: check
-    Cards on Table: ['D7', 'DT', 'D4']
+    player_4: call
     player_0: raise
-    player_5: raise
-    player_0: call
-    player_5: raise
-    player_0: call
-    player_5: check
+    player_1: fold
+    player_4: call
+    player_0: raise
+    player_4: call
+    player_0: raise
+    player_4: call
+    player_0: check
+    player_4: check
+    player_0: check
+    player_4: check
+    Cards on Table: ['D2', 'D4', 'CA', 'DK']
+    player_0: raise
+    player_4: call
+    player_0: raise
+    player_4: call
+    player_0: check
+    player_4: check
+    player_0: check
+    player_4: check
+    Cards on Table: ['D2', 'D4', 'CA', 'DK', 'C3']
+    player_0: raise
+    player_4: call
     player_0: fold
 Overall player rewards:
-    player_0: -8.0
-    player_1: -1.0
-    player_2: 0.0
+    player_0: -15.0
+    player_1: -6.0
+    player_2: -5.0
     player_3: -5.0
-    player_4: -0.5
-    player_5: 14.5
-
-
-Hands:
-    player_0: ['D9', 'H2']
-    player_1: ['DK', 'HJ']
-    player_2: ['HQ', 'D6']
-    player_3: ['D7', 'D2']
-    player_4: ['SQ', 'D8']
-    player_5: ['ST', 'S8']
-Game Log:
-    player_5: fold
-    player_0: raise
-    player_1: call
-    player_2: raise
-    player_3: call
-    player_4: call
-    player_0: call
-    player_1: raise
-    player_2: fold
-    player_3: raise
-    player_4: fold
-    player_0: call
-    player_1: call
-    player_3: check
-    player_0: check
-    player_1: check
-    Cards on Table: ['CK', 'S6', 'DQ']
-    player_3: check
-    player_0: raise
-    player_1: raise
-    player_3: call
-    player_0: fold
-    player_1: raise
-    player_3: raise
-    player_1: call
-    player_3: check
-    player_1: check
-    player_3: fold
-Overall player rewards:
-    player_0: -6.0
-    player_1: 21.0
-    player_2: -3.0
-    player_3: -9.0
-    player_4: -3.0
+    player_4: 31.0
     player_5: 0.0
 
 
 Hands:
-    player_0: ['S3', 'S9']
-    player_1: ['DK', 'C5']
-    player_2: ['H7', 'SA']
-    player_3: ['D9', 'SQ']
-    player_4: ['H5', 'S2']
-    player_5: ['S8', 'C3']
+    player_0: ['HT', 'H7']
+    player_1: ['CT', 'DA']
+    player_2: ['C9', 'D8']
+    player_3: ['D6', 'SJ']
+    player_4: ['D9', 'SQ']
+    player_5: ['H8', 'S3']
 Game Log:
+    player_5: raise
+    player_0: raise
+    player_1: fold
+    player_2: call
+    player_3: call
+    player_4: raise
+    player_5: call
+    player_0: raise
+    player_2: fold
+    player_3: call
+    player_4: call
+    player_5: call
+    player_0: check
+    player_3: check
+    Cards on Table: ['H9', 'DK', 'CJ']
+    player_4: check
+    player_5: fold
+    player_0: check
+    player_3: raise
+    player_4: raise
     player_0: call
+    player_3: raise
+    player_4: raise
+    player_0: call
+    player_3: call
+    player_4: fold
+    player_0: check
+    player_3: check
+    player_0: check
+    Cards on Table: ['H9', 'DK', 'CJ', 'C6']
+    player_3: check
+    player_0: check
+    player_3: check
+    player_0: check
+    player_3: raise
+    player_0: call
+    player_3: raise
+    player_0: call
+    player_3: check
+    player_0: check
+    player_3: check
+    player_0: check
+    Cards on Table: ['H9', 'DK', 'CJ', 'C6', 'S8']
+    player_3: raise
+    player_0: fold
+Overall player rewards:
+    player_0: -13.0
+    player_1: 0.0
+    player_2: -3.0
+    player_3: 30.0
+    player_4: -9.0
+    player_5: -5.0
+
+
+Hands:
+    player_0: ['CJ', 'S9']
+    player_1: ['S2', 'DK']
+    player_2: ['CK', 'C7']
+    player_3: ['DQ', 'DA']
+    player_4: ['D7', 'D4']
+    player_5: ['CA', 'HA']
+Game Log:
+    player_4: call
+    player_5: raise
+    player_0: raise
     player_1: raise
     player_2: call
     player_3: raise
-    player_4: fold
-    player_5: raise
+    player_4: call
+    player_5: call
     player_0: call
     player_1: fold
     player_2: call
-    player_3: raise
-    player_5: call
-    player_0: call
-    player_2: call
-    player_3: fold
-    player_5: fold
-    player_0: check
-    player_2: check
-    Cards on Table: ['CQ', 'H3', 'H4']
+    player_3: check
+    Cards on Table: ['H4', 'SA', 'C8']
+    player_4: fold
+    player_5: check
     player_0: raise
     player_2: call
+    player_3: fold
+    player_5: raise
+    player_0: raise
+    player_2: raise
+    player_5: call
+    player_0: call
+    player_2: check
+    player_5: check
+    player_0: check
+    Cards on Table: ['H4', 'SA', 'C8', 'H5']
+    player_2: check
+    player_5: raise
+    player_0: call
+    player_2: fold
+    player_5: check
+    player_0: check
+    player_5: check
+    player_0: check
+    Cards on Table: ['H4', 'SA', 'C8', 'H5', 'H2']
+    player_5: check
+    player_0: check
+    player_5: raise
     player_0: fold
 Overall player rewards:
-    player_0: -6.0
-    player_1: -2.0
-    player_2: 18.5
+    player_0: -11.0
+    player_1: -4.0
+    player_2: -9.0
     player_3: -5.0
-    player_4: -0.5
-    player_5: -5.0
+    player_4: -5.0
+    player_5: 34.0
+
+
+Hands:
+    player_0: ['H6', 'C8']
+    player_1: ['CQ', 'CA']
+    player_2: ['ST', 'H2']
+    player_3: ['S8', 'D7']
+    player_4: ['H7', 'H8']
+    player_5: ['H3', 'H4']
+Game Log:
+    player_1: fold
+    player_2: fold
+    player_3: fold
+    player_4: fold
+    player_5: fold
+Overall player rewards:
+    player_0: 0.5
+    player_1: 0.0
+    player_2: 0.0
+    player_3: 0.0
+    player_4: 0.0
+    player_5: -0.5
 
 
