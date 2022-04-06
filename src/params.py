@@ -13,6 +13,7 @@ class TrainConfig:
 
 class EvalConfig:
     def __init__(self):
+        self.opponent_types = ["random", "rule", "mixed"]
         self.num_games = 1000
         # How many games to save that the learning agent lost
         self.num_saved_losses = 5
