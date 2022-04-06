@@ -13,12 +13,14 @@ import rlcard.agents.pettingzoo_agents
 env_config = EnvConfig()
 eval_config = EvalConfig()
 
+rlcard.utils.set_seed(eval_config.seed)
+
 with open("./outputs/model.pkl", "rb") as f:
     learning_agent = pickle.load(f)
 
 # Create an environment for multi-agent training using pettingzoo
 env = pettingzoo.classic.texas_holdem_v4.env(num_players = env_config.num_opponents + 1)
-env.seed(0)
+env.seed(eval_config.seed)
 env.reset()
 
 agents = {}

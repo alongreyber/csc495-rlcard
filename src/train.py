@@ -15,6 +15,8 @@ from utils import LimitholdemRuleAgentPettingZoo
 train_config = TrainConfig()
 env_config = EnvConfig()
 
+rlcard.utils.set_seed(train_config.seed)
+
 # Create an environment for multi-agent training using pettingzoo
 env = pettingzoo.classic.texas_holdem_v4.env(
     num_players = env_config.num_opponents + 1
