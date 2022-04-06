@@ -10,7 +10,7 @@ import rlcard
 import rlcard.agents.pettingzoo_agents
 
 from params import TrainConfig, EnvConfig
-from utils import LimitholdemRuleAgentPettingZoo
+from utils import LimitholdemRuleAgentPettingZoo, run_game_pettingzoo
 
 train_config = TrainConfig()
 env_config = EnvConfig()
@@ -52,25 +52,7 @@ reward_info = []
 # Train
 num_timesteps = 0
 for episode in range(train_config.num_training_episodes):
-    env.reset()
-    trajectories = defaultdict(list)
-    for agent_name in env.agent_iter():
-        obs, reward, done, _ = env.last()
-        trajectories[agent_name].append((obs, reward, done))
-
-        # Augment observation with raw observation data (not sure why this isn't included)
-        obs["raw_obs"] = env.unwrapped.env._extract_state(
-            env.unwrapped.env.game.get_state(env.agents.index(agent_name))
-        )["raw_obs"]
-        obs["raw_legal_actions"] = obs["raw_obs"]["legal_actions"]
-
-        if done:
-            action = None
-        else:
-            action = agents[agent_name].step(obs)
-        trajectories[agent_name].append(action)
-
-        env.step(action)
+    trajectories = run_game_pettingzoo(env, agents)
 
     trajectories = rlcard.utils.reorganize_pettingzoo(trajectories)
     num_timesteps += sum([len(t) for t in trajectories.values()])
