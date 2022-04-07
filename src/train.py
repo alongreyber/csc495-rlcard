@@ -75,6 +75,8 @@ for episode in range(train_config.num_training_episodes):
             sum(ts[2] for ts in trajectories[learning_agent_name])
         reward_info.append(total_reward)
 
+    env.reset()
+
 # Save model
 with open("./outputs/model.pkl", "wb") as f:
     pickle.dump(learning_agent, f)

@@ -4,8 +4,8 @@ stages:
     cmd: python3 src/train.py
     deps:
     - path: src/train.py
-      md5: fcd1ab801bb61cb7168029be31d018cc
-      size: 2027
+      md5: ea73aca6bf7116a3edfe3bf65aff250c
+      size: 2425
     params:
       src/params.py:
         EnvConfig:
@@ -14,20 +14,21 @@ stages:
           num_training_episodes: 40000
           mlp_layer_count: 2
           mlp_layer_size: 64
+          learning_rate: 5e-05
           seed: 42
     outs:
     - path: outputs/model.pkl
-      md5: 19148914aeac56a2e7d9d5ba46dcb921
-      size: 11549497
+      md5: ed51eb53e488bfaec3c2989489ff7916
+      size: 11170843
     - path: outputs/train_rewards.json
-      md5: c248a6f84e50df8a496f9645e082a899
-      size: 7007
+      md5: 6cd3600df99162a1408d751f7370b03a
+      size: 7073
   eval:
     cmd: python3 src/eval.py
     deps:
     - path: outputs/model.pkl
-      md5: 19148914aeac56a2e7d9d5ba46dcb921
-      size: 11549497
+      md5: ed51eb53e488bfaec3c2989489ff7916
+      size: 11170843
     - path: src/eval.py
       md5: 9807e0ceb001fe7fc5779ab2b9f7d43c
       size: 4154
@@ -45,8 +46,8 @@ stages:
           seed: 42
     outs:
     - path: outputs/losses_info.txt
-      md5: 54ca08dac52235588b0b17ac3ff5b39b
-      size: 6722
+      md5: f08217a684761c90aeccdf7faaff9644
+      size: 7169
     - path: outputs/metrics.json
-      md5: 797114164e0e2f55a84a9cb864e6f5d2
-      size: 95
+      md5: 40b67aab2d4d3d549fce3b2a3f5cd207
+      size: 96
