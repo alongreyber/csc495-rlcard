@@ -2,6 +2,7 @@ import json
 import torch
 import pickle
 from collections import defaultdict
+import random
 
 import pettingzoo
 import pettingzoo.classic.texas_holdem_v4
@@ -38,20 +39,28 @@ learning_agent = rlcard.agents.pettingzoo_agents.DQNAgentPettingZoo(
         train_config.mlp_layer_size
         for _ in range(train_config.mlp_layer_count)
     ],
+    learning_rate = train_config.learning_rate,
     device=device,
 )
 
 agents[learning_agent_name] = learning_agent
 
-# Define the opponents
-for i in range(env_config.num_opponents):
-    agents[env.agents[i+1]] = LimitholdemRuleAgentPettingZoo()
 
 reward_info = []
 
 # Train
 num_timesteps = 0
 for episode in range(train_config.num_training_episodes):
+
+    # Define the opponents randomly
+    for i in range(env_config.num_opponents):
+        opponent_type = random.choice(["random", "rule"])
+        if opponent_type == "random":
+            agents[env.agents[i+1]] = rlcard.agents.pettingzoo_agents.RandomAgentPettingZoo(num_actions=env.action_space(env.agents[i+1]).n)
+        if opponent_type == "rule":
+            agents[env.agents[i+1]] = LimitholdemRuleAgentPettingZoo()
+
+    # Run the game
     trajectories = run_game_pettingzoo(env, agents)
 
     trajectories = rlcard.utils.reorganize_pettingzoo(trajectories)

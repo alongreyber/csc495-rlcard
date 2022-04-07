@@ -6,9 +6,10 @@ class EnvConfig:
 
 class TrainConfig:
     def __init__(self):
-        self.num_training_episodes = 4000
+        self.num_training_episodes = 40000
         self.mlp_layer_count = 2
         self.mlp_layer_size = 64
+        self.learning_rate = 5e-5
         self.seed = 42
 
 class EvalConfig:
