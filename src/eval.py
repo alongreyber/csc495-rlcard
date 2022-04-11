@@ -1,8 +1,10 @@
 import json
 from collections import defaultdict
+import random
 import pickle
 
 from params import EnvConfig, EvalConfig
+from utils import LimitholdemRuleAgentPettingZoo, tournament_pettingzoo, augment_observation
 
 import pettingzoo
 import pettingzoo.classic.texas_holdem_v4
@@ -30,17 +32,33 @@ device = rlcard.utils.get_device()
 learning_agent_name = env.agents[0]
 agents[learning_agent_name] = learning_agent
 
-# Define the opponents
-for i in range(env_config.num_opponents):
-    agents[env.agents[i+1]] = rlcard.agents.pettingzoo_agents.RandomAgentPettingZoo(num_actions=env.action_space(env.agents[i]).n)
+opponent_type_rewards = {}
 
-# Evaluate
-rewards = rlcard.utils.tournament_pettingzoo(env, agents, eval_config.num_games)
-learned_agent_reward = rewards[learning_agent_name]
+for opponent_type in eval_config.opponent_types:
+    # Define the opponents
+    for i in range(env_config.num_opponents):
+        if opponent_type == "random":
+            agents[env.agents[i+1]] = rlcard.agents.pettingzoo_agents.RandomAgentPettingZoo(num_actions=env.action_space(env.agents[i+1]).n)
+        if opponent_type == "rule":
+            agents[env.agents[i+1]] = LimitholdemRuleAgentPettingZoo()
+        if opponent_type == "mixed":
+            # Half rule, half random
+            if i % 2 == 0:
+                agents[env.agents[i+1]] = rlcard.agents.pettingzoo_agents.RandomAgentPettingZoo(num_actions=env.action_space(env.agents[i]).n)
+            else:
+                agents[env.agents[i+1]] = LimitholdemRuleAgentPettingZoo()
+
+    # Evaluate
+    rewards = tournament_pettingzoo(env, agents, eval_config.num_games)
+    learned_agent_reward = rewards[learning_agent_name]
+    opponent_type_rewards[opponent_type + "_average_reward"] = learned_agent_reward
+
+    # Need to reset between runs
+    env.reset()
 
 # Save tournament rewards
 with open("./outputs/metrics.json", "w") as f:
-    json.dump({"tournament_average_reward": learned_agent_reward}, f)
+    json.dump(opponent_type_rewards, f)
 
 
 ### Simulate and log interesting games
@@ -73,6 +91,9 @@ for i in range(1000):
         trajectories[agent_name].append((obs, reward, done))
 
         current_game_rewards[agent_name] += reward
+        augment_observation(
+            obs, env, agent_name
+        )
 
         # Check for new cards
         if raw_env.get_state(0)["raw_obs"]["public_cards"] != current_public_cards:

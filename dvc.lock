@@ -4,45 +4,50 @@ stages:
     cmd: python3 src/train.py
     deps:
     - path: src/train.py
-      md5: a63326fcb5c5a22d75a8870f1effcd97
-      size: 2646
+      md5: ea73aca6bf7116a3edfe3bf65aff250c
+      size: 2425
     params:
       src/params.py:
         EnvConfig:
           num_opponents: 5
         TrainConfig:
-          num_training_episodes: 4000
+          num_training_episodes: 40000
           mlp_layer_count: 2
           mlp_layer_size: 64
+          learning_rate: 5e-05
           seed: 42
     outs:
     - path: outputs/model.pkl
-      md5: 304d8f2558deeb0b20c494bdcc3e88b1
-      size: 6505214
+      md5: ed51eb53e488bfaec3c2989489ff7916
+      size: 11170843
     - path: outputs/train_rewards.json
-      md5: 7646d69bfc16593485853eac9c4d6ea9
-      size: 696
+      md5: 6cd3600df99162a1408d751f7370b03a
+      size: 7073
   eval:
     cmd: python3 src/eval.py
     deps:
     - path: outputs/model.pkl
-      md5: 304d8f2558deeb0b20c494bdcc3e88b1
-      size: 6505214
+      md5: ed51eb53e488bfaec3c2989489ff7916
+      size: 11170843
     - path: src/eval.py
-      md5: e5a28fb1f40399e81e370d6ec828d8b4
-      size: 3295
+      md5: 9807e0ceb001fe7fc5779ab2b9f7d43c
+      size: 4154
     params:
       src/params.py:
         EnvConfig:
           num_opponents: 5
         EvalConfig:
+          opponent_types:
+          - random
+          - rule
+          - mixed
           num_games: 1000
           num_saved_losses: 5
           seed: 42
     outs:
     - path: outputs/losses_info.txt
-      md5: 038cba2d4a9e1e5a7191f068c5428a76
-      size: 5438
+      md5: f08217a684761c90aeccdf7faaff9644
+      size: 7169
     - path: outputs/metrics.json
-      md5: 99f601b9211fc826329c09caa8a2bb73
-      size: 38
+      md5: 40b67aab2d4d3d549fce3b2a3f5cd207
+      size: 96
