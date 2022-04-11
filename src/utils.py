@@ -19,6 +19,41 @@ class LimitholdemRuleAgentPettingZoo(LimitholdemRuleAgentV1):
         # Convert action to index
         return self.all_actions.index(action)
 
+class LimitHoldemHumanAgent(object):
+    ''' A human agent for Limit Holdem. It can be used to play against trained models
+    '''
+
+    def __init__(self, num_actions):
+        ''' Initilize the human agent
+        Args:
+            num_actions (int): the size of the ouput action space
+        '''
+        self.use_raw = True
+        self.num_actions = num_actions
+
+    @staticmethod
+    def step(state):
+        ''' Human agent will display the state and make decisions through interfaces
+        Args:
+            state (dict): A dictionary that represents the current state
+        Returns:
+            action (int): The action decided by human
+        '''
+        print('\n=========== Actions You Can Choose ===========')
+        print(', '.join(
+            [
+                str(index) + ': ' + action
+                for index, action in enumerate(
+                        state['legal_actions']
+                )]
+        ))
+        print('')
+        action = int(input('>> You choose action (integer): '))
+        while action < 0 or action >= len(state['legal_actions']):
+            print('Action illegel...')
+            action = int(input('>> Re-choose action (integer): '))
+        return state['raw_legal_actions'][action]
+
 def augment_observation(obs, env, agent_name):
     # Augment observation with raw observation data (not sure why this isn't included)
     obs["raw_obs"] = env.unwrapped.env._extract_state(
