@@ -17,4 +17,4 @@ RUN pip3 install -U pip && \
 WORKDIR /app
 COPY . .
 
-CMD python src/play.py
+CMD python3 src/play.py

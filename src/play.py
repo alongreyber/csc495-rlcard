@@ -3,11 +3,13 @@ import pickle
 import collections
 import shutil
 import subprocess
+import os
 
 from params import EnvConfig, EvalConfig
 
 import pettingzoo
 import pettingzoo.classic
+import pettingzoo.classic.texas_holdem_v4
 import dvc.api
 
 import rlcard
@@ -26,6 +28,16 @@ env = pettingzoo.classic.texas_holdem_v4.env(num_players = env_config.num_oppone
 env.reset()
 
 agents = {}
+
+print("Running setup, please wait...")
+
+# We need the actual .git folder for dvc metrics call
+if not os.path.exists(".git"):
+    subprocess.run(
+        ["git", "clone", "https://github.com/alongreyber/csc495-rlcard", "/rlcard-git"],
+        stdout=subprocess.DEVNULL
+    )
+    os.rename("/rlcard-git/.git", ".git")
 
 print_header("Texas Holdem")
 print_header("by Alon Greyber")
