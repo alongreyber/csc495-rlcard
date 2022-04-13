@@ -2,11 +2,13 @@ import json
 import pickle
 import collections
 import shutil
+import subprocess
 
 from params import EnvConfig, EvalConfig
 
 import pettingzoo
 import pettingzoo.classic
+import dvc.api
 
 import rlcard
 import rlcard.agents.pettingzoo_agents
@@ -50,7 +52,24 @@ for i in range(env_config.num_opponents + 1):
             )
         human_in_game = True
     elif choice == "m":
-        raise NotImplementedError()
+        # Pick a model
+        commit = None
+        while not commit:
+            metrics_table = subprocess.check_output(["dvc", "metrics", "show", "-A", "outputs/metrics.json"]).decode("UTF-8").split("\n")
+            print_header("Please choose a model")
+            print("\n".join(metrics_table[:10]))
+            user_input = input("Enter the start of the commit hash you would like to use: ")
+            # Find the referenced model
+            for m in metrics_table:
+                if m.startswith(user_input):
+                    commit = m.split(" ")[0]
+        print(f"You selected commit {commit}")
+        with dvc.api.open(
+                path = "outputs/model.pkl",
+                rev = commit,
+                mode = "rb"
+        ) as f:
+            agents[env.agents[i]] = pickle.load(f)
     elif choice == "r":
         agents[env.agents[i]] = \
             rlcard.agents.pettingzoo_agents.RandomAgentPettingZoo(
@@ -61,7 +80,7 @@ for i in range(env_config.num_opponents + 1):
 raw_env = env.env.env.env.env
 env.reset()
 trajectories = collections.defaultdict(list)
-current_public_cards = []
+current_public_cards = None
 current_game_rewards = collections.defaultdict(lambda: 0)
 
 print_header("Starting Game")
@@ -77,7 +96,7 @@ for agent_name in env.agent_iter():
     )
 
     # Check for new cards
-    if raw_env.get_state(0)["raw_obs"]["public_cards"] != current_public_cards:
+    if raw_env.get_perfect_information()["public_card"] != current_public_cards:
         current_public_cards = raw_env.get_state(0)["raw_obs"]["public_cards"]
         rlcard.utils.print_card(current_public_cards)
 
