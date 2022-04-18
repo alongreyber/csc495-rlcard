@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+import rlcard.utils
 from rlcard.utils.pettingzoo_utils import reorganize_pettingzoo
 from rlcard.models.limitholdem_rule_models import LimitholdemRuleAgentV1
 
@@ -39,20 +40,35 @@ class LimitHoldemHumanAgent(object):
         Returns:
             action (int): The action decided by human
         '''
+
+        print("Your cards: ")
+        rlcard.utils.print_card(state['raw_obs']['hand'])
+
         print('\n=========== Actions You Can Choose ===========')
         print(', '.join(
             [
                 str(index) + ': ' + action
                 for index, action in enumerate(
-                        state['legal_actions']
+                        state['raw_legal_actions']
                 )]
         ))
         print('')
         action = int(input('>> You choose action (integer): '))
-        while action < 0 or action >= len(state['legal_actions']):
+        while action < 0 or action >= len(state['raw_legal_actions']):
             print('Action illegel...')
             action = int(input('>> Re-choose action (integer): '))
-        return state['raw_legal_actions'][action]
+
+        all_actions = ['call', 'raise', 'fold', 'check']
+        return all_actions.index(state['raw_legal_actions'][action])
+
+    def eval_step(self, state):
+        ''' Predict the action given the curent state for evaluation. The same to step here.
+        Args:
+            state (numpy.array): an numpy array that represents the current state
+        Returns:
+            action (int): the action predicted (randomly chosen) by the random agent
+        '''
+        return self.step(state), {}
 
 def augment_observation(obs, env, agent_name):
     # Augment observation with raw observation data (not sure why this isn't included)
