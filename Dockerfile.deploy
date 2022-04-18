@@ -15,8 +15,8 @@ RUN pip3 install -U pip && \
     pip3 install --ignore-installed rlcard==1.0.6
 
 # Move public AWS credentials to the right place
-COPY aws_public_credentials ~/.aws/credentials
-COPY aws_public_config ~/.aws/config
+COPY aws_public_credentials /root/.aws/credentials
+COPY aws_public_config /root/.aws/config
 
 WORKDIR /app
 COPY . .
