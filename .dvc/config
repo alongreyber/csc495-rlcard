@@ -3,3 +3,6 @@
     remote = storage
 ['remote "storage"']
     url = s3://csc495-rlcard
+    # Public Access Key for signing requests
+    access_key_id = AKIAUWHYRIUK3JVRKQ65
+    secret_access_key = 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
