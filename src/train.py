@@ -54,7 +54,7 @@ for episode in range(train_config.num_training_episodes):
 
     # Define the opponents randomly
     for i in range(env_config.num_opponents):
-        opponent_type = random.choice(["random", "rule"])
+        opponent_type = random.choice(train_config.opponent_types)
         if opponent_type == "random":
             agents[env.agents[i+1]] = rlcard.agents.pettingzoo_agents.RandomAgentPettingZoo(num_actions=env.action_space(env.agents[i+1]).n)
         if opponent_type == "rule":

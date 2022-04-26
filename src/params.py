@@ -11,6 +11,7 @@ class TrainConfig:
         self.mlp_layer_size = 64
         self.learning_rate = 5e-5
         self.seed = 42
+        self.opponent_types = ["random", "rule"]
 
 class EvalConfig:
     def __init__(self):

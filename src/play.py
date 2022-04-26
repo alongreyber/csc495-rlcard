@@ -69,7 +69,7 @@ for i in range(env_config.num_opponents + 1):
         while not commit:
             metrics_table = subprocess.check_output(["dvc", "metrics", "show", "-A", "outputs/metrics.json"]).decode("UTF-8").split("\n")
             print_header("Please choose a model")
-            print("\n".join(metrics_table[:10]))
+            print("\n".join(metrics_table))
             user_input = input("Enter the start of the commit hash you would like to use: ")
             # Find the referenced model
             for m in metrics_table:
